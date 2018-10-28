@@ -126,4 +126,21 @@ public class ProductDAO {
         con.close();
         return product;
     }
+    
+    public int remove(int productId) throws Exception {
+        int k = 0;
+        try(Connection con = new DBContext().getConnection()) {
+            String sql = "DELETE FROM [Product] WHERE productId=?";
+            PreparedStatement psmt = con.prepareStatement(sql);
+            psmt.setInt(1, productId);
+            k = psmt.executeUpdate();
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+        
+        return k;
+    }
 }

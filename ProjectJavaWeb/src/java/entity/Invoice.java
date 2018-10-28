@@ -21,6 +21,14 @@ public class Invoice {
     public Invoice() {
     }
 
+    public Invoice(int userID, Date orderTime, String address, String phone) {
+        this.userID = userID;
+        this.orderTime = orderTime;
+        this.address = address;
+        this.phone = phone;
+    }
+    
+    
     
     public Invoice(int invoiceID, int userID, Date orderTime, String address, String phone) {
         this.invoiceID = invoiceID;

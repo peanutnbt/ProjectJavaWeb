@@ -21,9 +21,6 @@
         function changeValue2(event) {
             document.getElementById("name").readOnly = false;
         }
-        function changeValue3(event) {
-            document.getElementById("avatarUrl").readOnly = false;
-        }
     </script>
 
     <body>          
@@ -32,7 +29,7 @@
         <div class="container" style="margin-top: 200px">
             <div class="row">
                 <!--                User Information-->
-                <div class="col-4 hovereffect3">
+                <div class="col-4 hovereffect3 text-center">
                     <!--Image-->
                     <div class="hovereffect">
                         <img src="${pageContext.request.contextPath}/DisplayImages?imgname=${sessionScope.user.avatarUrl}" alt="${sessionScope.user.name}" class="img-thumbnail rounded-circle" style=" height: 330px" />
@@ -45,7 +42,7 @@
 
 
                 <div class="col-md-8">
-                    <form action="UpdateUserInfoServlet" method="POST">
+                    <form action="UpdateUserInfoServlet" method="POST" enctype="multipart/form-data">
                         <!--Particular user's information-->
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -65,15 +62,14 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="inputGroup-sizing-default">AvatarURL</span>
                             </div>
-                            <input type="text" class="form-control"  name='avatarUrl'id="avatarUrl" readOnly value="${sessionScope.user.avatarUrl}"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                            <input type="text" class="form-control"  name='avatar'id="avatarUrl" readOnly value="${sessionScope.user.avatarUrl}"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         </div>
-                        <i class="fas fa-edit" onClick="changeValue3()"></i>
-                        <!--                        <div class="form-group">
-                                                    <label for="file-upload" class="custom-file-upload">
-                                                        <i class="fas fa-cloud-upload-alt"></i> Avatar
-                                                    </label>
-                                                    <input id="file-upload" name="avatar" type="file" size="50" required="required"/>
-                                                </div>-->
+                        <div class="form-group">
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="fas fa-cloud-upload-alt"></i> Avatar
+                            </label>
+                            <input id="file-upload" name="avatarUrl" type="file" size="50" />
+                        </div>
                         <div className="text-right">
                             <input type="submit" class="btn btn-outline-success" value="Update"/>
                         </div>
@@ -104,9 +100,8 @@
                                         <tbody>
                                             <c:forEach var='shop' items='${shops}'> 
                                                 <tr>
-                                                    <c:url var="shopdetail" value="/container/user/Shop.jsp">
+                                                    <c:url var="shopdetail" value="/ShopManagerServlet">
                                                         <c:param name="shopId" value="${shop.shopId}"></c:param>
-                                                        <c:param name="userId" value="${sessionScope.user.userId}"></c:param>
                                                     </c:url>
                                                     <td><a href="${shopdetail}">${shop.shopId}</a></td>
                                                     <td>${shop.title}</td>
@@ -164,20 +159,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <c:set var="total" value="0" scope="request"/>
                                 <c:forEach var='product2' items='${products2}'> 
                                     <tr>
+                                        <c:url var="shopdetail" value="/container/user/Shop.jsp">
+                                            <c:param name="shopId" value="${product2.shopID}"></c:param>
+                                            <c:param name="userId" value="${sessionScope.user.userId}"></c:param>
+                                        </c:url>
                                         <td>${product2.productID}</td>
-                                        <td>${product2.shopID}</td>
+                                        <td><a href="${shopdetail}">${product2.shopID}</a></td>
                                         <td>${product2.name}</td>
-                                        <td>${product2.image}</td>
+                                        <td><img src="${pageContext.request.contextPath}/DisplayImages?imgname=${product2.image}" alt="" height=100 width=100></img></td>
                                         <td>${product2.price}</td>
                                         <td>${product2.quantity}</td>
                                         <td>${product2.note}</td>
-
+                                        <c:set var = "total" scope="request" value = "${total + product2.price*product2.quantity}"/>                
                                     </tr>
                                 </c:forEach>
                             </tbody>
                         </table> 
+                        <h3>Your total price:   <c:out value="${total}"/> Đ</h3>
                     </c:if>
 
                 </div>

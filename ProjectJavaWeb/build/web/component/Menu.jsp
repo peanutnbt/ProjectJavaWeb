@@ -9,7 +9,7 @@
 
 <jsp:setProperty name="sb" property="*"/>
 <%
-request.setCharacterEncoding("UTF-8");
+    request.setCharacterEncoding("UTF-8");
 %>
 <div>
     <nav class='navbar header fixed-top navber-expland-lg navbar-light'>
@@ -58,7 +58,7 @@ request.setCharacterEncoding("UTF-8");
                             <li><a href="/ProjectJavaWeb/LogoutServlet" class="btn btn-default btn-sm pull-right"><i class="fa fa-power-off" aria-hidden="true"></i> Sign Out</a></li>
                         </ul>
                     </div>
-                    <a href="#" class="btn btn-danger cartButton"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="http://localhost:17978/ProjectJavaWeb/container/user/checkout.jsp" class="btn btn-danger cartButton"><i class="fas fa-shopping-cart"></i></a>
                 </div>
             </c:if>
         </div>

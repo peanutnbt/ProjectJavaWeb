@@ -82,7 +82,6 @@ public class SigupServlet extends HttpServlet {
         
         //check loi up anh
         String avatarUrl=UploadImages.getNewNameAndStore(request, request.getServletContext().getInitParameter("IMAGE_STORAGE_LOCATION"), username);
-        
 
         String password = request.getParameter("password").trim();
         String email = request.getParameter("email").trim();

@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/src/java/dao/UsersDAO.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/web/container/user/Home.jsp</file>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/src/java/controller/authenticate/LoginServlet.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/web/container/user/SignUp.jsp</file>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/src/java/controller/authenticate/SigupServlet.java</file>
+            <file>file:/D:/HOCTAP/Semester%204/PRJ321/Assignment/ProjectJavaWeb/ProjectJavaWeb/src/java/controller/cart/PushProductSessionServlet.java</file>
+            <file>file:/D:/HOCTAP/Semester%204/PRJ321/Assignment/ProjectJavaWeb/ProjectJavaWeb/src/java/controller/cart/ThanhToanServlet.java</file>
+            <file>file:/D:/HOCTAP/Semester%204/PRJ321/Assignment/ProjectJavaWeb/ProjectJavaWeb/web/container/user/Shop.jsp</file>
+            <file>file:/D:/HOCTAP/Semester%204/PRJ321/Assignment/ProjectJavaWeb/ProjectJavaWeb/web/component/Menu.jsp</file>
+            <file>file:/D:/HOCTAP/Semester%204/PRJ321/Assignment/ProjectJavaWeb/ProjectJavaWeb/src/java/controller/cart/AddProductSessionServlet.java</file>
+            <file>file:/D:/HOCTAP/Semester%204/PRJ321/Assignment/ProjectJavaWeb/ProjectJavaWeb/web/container/user/checkout.jsp</file>
+            <file>file:/D:/HOCTAP/Semester%204/PRJ321/Assignment/ProjectJavaWeb/ProjectJavaWeb/web/container/user/Profile.jsp</file>
         </group>
     </open-files>
 </project-private>

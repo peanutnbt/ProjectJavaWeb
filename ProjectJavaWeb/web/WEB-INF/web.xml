@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <context-param>
         <param-name>IMAGE_STORAGE_LOCATION</param-name>
-        <param-value>C:\Users\ASUS\Desktop\abc\UploadImg</param-value>
+        <param-value>D:\HOCTAP\Semester 4\PRJ321\Assignment\ProjectJavaWeb\UploadImg</param-value>
     </context-param>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
@@ -64,7 +64,26 @@
         <servlet-name>DisplayImages</servlet-name>
         <servlet-class>controller.system.DisplayImages</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>CartControllerServlet</servlet-name>
+        <servlet-class>controller.cart.CartControllerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <servlet-class>controller.cart.RemoveProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PushProductSessionServlet</servlet-name>
+        <servlet-class>controller.cart.PushProductSessionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThanhToanServlet</servlet-name>
+        <servlet-class>controller.cart.ThanhToanServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProductSessionServlet</servlet-name>
+        <servlet-class>controller.cart.AddProductSessionServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -124,6 +143,26 @@
     <servlet-mapping>
         <servlet-name>ShopManagerServlet</servlet-name>
         <url-pattern>/ShopManagerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartControllerServlet</servlet-name>
+        <url-pattern>/CartControllerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <url-pattern>/RemoveProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PushProductSessionServlet</servlet-name>
+        <url-pattern>/PushProductSessionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThanhToanServlet</servlet-name>
+        <url-pattern>/ThanhToanServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductSessionServlet</servlet-name>
+        <url-pattern>/AddProductSessionServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

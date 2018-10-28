@@ -25,9 +25,13 @@
 
         <jsp:useBean id="cb" class="bean.CommentBean" scope="request"></jsp:useBean>
         <jsp:setProperty name="cb" param="shopId" property="shopId"/>
+
         <div>
             <div class="container-fluid details pb-3 pt-3">
                 <div class="container detailsStatus mt-3">
+                    <div class="alert alert-success" style="display:none" role="alert" id="alert">
+                        Adding Successfully!!
+                    </div>
                     <div class="row">
                         <div class="col-md-7">
                             <div class="row">
@@ -44,19 +48,19 @@
                                     <p>${sb.shopById.description}</p>
                                     <div class="foodShop">
                                         <c:forEach var="x" items="${pb.products}">
-                                            <div  class="oneFood food mb-3"}>
+                                            <div  class="oneFood food mb-3">
                                                 <div class="foodImg">
                                                     <img src="${pageContext.request.contextPath}/public/images/${x.image}" />
                                                 </div>
-                                                <div class="foodName">${x.name}</div>
-                                                <input type="number" name=""  value="0" min=0 max=100 class="slsp" />
-                                                <div class="foodPrice">${x.price}</div>
+                                                <div class="foodName" >${x.name}</div>
+                                                <input type="number" name=""  value="0" min=0 max=100 class="slsp" id="value${x.productId}"/>
+                                                <div class="foodPrice" >${x.price}</div>
                                             </div>
                                         </c:forEach>
                                     </div>
-                                    <a href="/cart" class="col-md-3" style= "padding: 0">
-                                        <div class="btn btn-danger" style=" width: 100%" >Order ngay</div>
-                                    </a>
+
+                                    <input class="btn btn-danger addProductSession" style=" width: 100%" type="submit" value="Order ngay"/>
+
                                     <div class="expressBar mt-3">
                                         <i class="far fa-heart"></i>
                                         <i class="far fa-comment"></i>
@@ -157,13 +161,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script>
-            document.querySelector(".userInputCM").onfocus = function () {
-                document.querySelector(".addComment").classList.add("show")
-            }
-            document.querySelector(".userInputCM").onblur = function () {
-                document.querySelector(".addComment").classList.remove("show")
-            }
-            document.getElementsByClassName("header")[0].classList.add("headerBg")
+                                        document.querySelector(".userInputCM").onfocus = function () {
+                                            document.querySelector(".addComment").classList.add("show")
+                                        }
+                                        document.querySelector(".userInputCM").onblur = function () {
+                                            document.querySelector(".addComment").classList.remove("show")
+                                        }
+                                        document.getElementsByClassName("header")[0].classList.add("headerBg")
         </script>
         <script>
             window.addEventListener("scroll", function () {
@@ -192,11 +196,11 @@
                             <div  class="oneComment row">
                                 <div class="col-md-1">
                                     <div class="avatarUserComment">
-                                        <img src="/ProjectJavaWeb/DisplayImages?imgname=`+dataFinal.avatarUrl+`"/>
+                                        <img src="/ProjectJavaWeb/DisplayImages?imgname=` + dataFinal.avatarUrl + `"/>
                                     </div>
                                 </div>
                                 <div class="col-md-11">
-                                    <a class="userNameComment">`+dataFinal.name+`</a>
+                                    <a class="userNameComment">` + dataFinal.name + `</a>
                                     <span class="timeStamp"><Moment format="YYYY/MM/DD HH:mm" date={comment.createAt} /></span>
                                     <div class="userComment">` + dataFinal.content + `</div>
                                 </div>
@@ -209,6 +213,40 @@
                     }
                 });
             });
+
+
+
+            $(".addProductSession").click((e) => {
+                var orderList = [{}];
+                var n = 0;
+                //List product
+            <c:forEach var="x" items="${pb.products}">
+                orderList[n] = {id: "${x.productId}", name: "${x.name}", quantity: document.getElementById("value" +${x.productId}).value, price:${x.price}, image: "${x.image}", shopId:${x.shopId}};
+                n++;
+            </c:forEach>
+                console.log(orderList);
+                $.ajax({
+                    url: '${pageContext.request.contextPath}' + '/AddProductSessionServlet',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        array: JSON.stringify(orderList)
+                    },
+                    success: function (data) {
+                        console.log("adding successfully");
+                        $("#alert").css("display", "block");
+                        setTimeout(function(){ $("#alert").css("display", "none"); }, 3000);
+                        
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        $("#alert").css("display", "block");
+                        setTimeout(function(){ $("#alert").css("display", "none"); }, 3000);
+                    }
+                });
+            });
+
+
 
         </script>
     </body>
