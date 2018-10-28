@@ -34,6 +34,10 @@ public class Product {
         this.price = price;
     }
 
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
     public void setShopId(int shopId) {
         this.shopId = shopId;
     }

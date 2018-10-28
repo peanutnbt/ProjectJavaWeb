@@ -12,18 +12,18 @@
 request.setCharacterEncoding("UTF-8");
 %>
 <div>
-    <nav class='navbar header fixed-top navber-expland-lg navbar-light'>
+    <nav class='navbar header fixed-top navber-expland-lg navbar-light' style="top:2px">
         <div class='container' >
             <div class='col-4'>
                 <div class='input-group mt-3'>
-                    <p style="width: 100%;color:rgb(48, 48, 48);font-size: 15px;font-weight: 700;" >Hotline: 0123456789</p>
-                    <p style="width: 100%;color:rgb(48, 48, 48);font-size: 15px;font-weight: 700;">Địa chỉ: Thắng béo</p>
+                    <p style="width: 100%;color:#D41816;font-size: 15px;font-weight: 700;" >Hotline: 0123456789</p>
+                    <p style="width: 100%;color:#D41816;font-size: 15px;font-weight: 700;">Địa chỉ: Thắng béo</p>
                 </div> 
             </div>
-            <div class='col-4'>
-                <div class='navbar-brand' href='#' >
-                    <a href="/ProjectJavaWeb/container/user/Home.jsp">
-                        <span><img src="${pageContext.request.contextPath}/public/images/logo.png" class='img-logo' alt='logo' /></span>
+            <div class='col-4 d-flex justify-content-center'>
+                <div class='navbar-brand' href='#' style="margin: 0!important">
+                    <a href="/ProjectJavaWeb/container/user/Home.jsp" class="d-flex justify-content-center">
+                        <span ><img src="${pageContext.request.contextPath}/public/images/logo.png" class='img-logo' alt='logo' /></span>
                     </a>
                 </div> 
             </div>
@@ -77,7 +77,7 @@ request.setCharacterEncoding("UTF-8");
                         </div>
                         <div class="form-group">
                             <label for="newShopDescription" class="text-black">Miêu tả</label><br>
-                            <input type="text" name="newShopDescription" id="newShopDescription"  class="form-control" autocomplete="off" required="required" placeholder="Giới thiệu về cửa hàng">
+                            <input type="text" name="newShopDescription" id="newShopDescription" maxlength="200"  class="form-control" autocomplete="off" required="required" placeholder="Giới thiệu về cửa hàng">
                         </div>
                         <div class="form-group">
                             <input style="width: 50%" type="submit" name="newShop" class="btn btn-info btn-md" value="Tạo cửa hàng">

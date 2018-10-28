@@ -87,10 +87,12 @@ public class CommentServlet extends HttpServlet {
 //        int shopId = Integer.parseInt(request.getParameter("shopId"));
 //        int userId = Integer.parseInt(request.getParameter("userId"));
 //        String content = request.getParameter("content");
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("application/json");
+        response.setCharacterEncoding("utf-8");
         JsonObjectBuilder job = Json.createObjectBuilder();
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("user");
-        response.setContentType("text/plain");
         int shopId = Integer.parseInt(request.getParameter("shopId").trim());
         int userId = Integer.parseInt(request.getParameter("userId").trim());
         String content = request.getParameter("content");

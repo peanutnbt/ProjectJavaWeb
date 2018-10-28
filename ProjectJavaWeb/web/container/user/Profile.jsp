@@ -26,7 +26,10 @@
         }
     </script>
 
-    <body>          
+    <body>    
+        <%
+            request.setCharacterEncoding("UTF-8");
+        %>
         <jsp:include page="/component/Menu.jsp"/>
 
         <div class="container" style="margin-top: 200px">
@@ -104,9 +107,8 @@
                                         <tbody>
                                             <c:forEach var='shop' items='${shops}'> 
                                                 <tr>
-                                                    <c:url var="shopdetail" value="/container/user/Shop.jsp">
+                                                    <c:url var="shopdetail" value="ShopManagerServlet">
                                                         <c:param name="shopId" value="${shop.shopId}"></c:param>
-                                                        <c:param name="userId" value="${sessionScope.user.userId}"></c:param>
                                                     </c:url>
                                                     <td><a href="${shopdetail}">${shop.shopId}</a></td>
                                                     <td>${shop.title}</td>

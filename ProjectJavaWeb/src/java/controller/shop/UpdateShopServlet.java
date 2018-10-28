@@ -35,6 +35,7 @@ public class UpdateShopServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            request.setCharacterEncoding("utf-8");
             HttpSession session=request.getSession();
             Users user=(Users)session.getAttribute("user");
             int userId=user.getUserId();

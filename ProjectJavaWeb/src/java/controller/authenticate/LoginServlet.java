@@ -44,15 +44,15 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             UsersDAO userdao = new UsersDAO();
             Users user = userdao.selectByUsername(username);
-            
-            
-            RequestDispatcher rd=request.getRequestDispatcher("container/user/Login.jsp");
+
+            RequestDispatcher rd = request.getRequestDispatcher("container/user/Login.jsp");
             if (user == null) {
-                session.setAttribute("error", "Username or password is invalid");
-                response.sendRedirect("container/user/Login.jsp");
+                request.setAttribute("error", "Username or email is existed");
+                rd.forward(request, response);
             } else {
                 if (user.getPassword().equals(password)) {
                     session.setAttribute("user", user);
+                    session.setMaxInactiveInterval(86400);
                     response.sendRedirect("container/user/Home.jsp");
                 } else {
                     request.setAttribute("error", "Username or email is existed");

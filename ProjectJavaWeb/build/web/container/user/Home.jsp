@@ -23,24 +23,42 @@
         <jsp:setProperty name="sb" property="pageSize" value="3"/>
 
         <div class="container " style="margin-top: 60px">
-            <div class="row" id="shops">
+            <div class="row mb-3" id="shops">
                 <c:forEach var="x" items="${sb.shops}">
                     <c:if test="${x.openOrClose==true}">
-                        <div class="col-lg-4 portfolio-item mb-3 ">
+                        <div class="col-lg-4 portfolio-item mb-3 oneShop">
                             <c:url var="shopdetail" value="/container/user/Shop.jsp">
                                 <c:param name="shopId" value="${x.shopId}"></c:param>
                                 <c:param name="userId" value="${x.userId}"></c:param>
                             </c:url>
-                            <a href="${shopdetail}">
-                                <div class="card h-100 cardShop" >
-                                    <div class="card-body">
-                                        <h4 class="card-title">
-                                            <div>${x.title}</div>
-                                        </h4>
-                                        <p class="card-text">${x.description}</p>
-                                    </div>
+                            <div class="card h-100 cardShop" onclick="window.location.href = '${shopdetail}';" style="cursor: pointer">
+                                <div class="card-body">
+                                    <c:if test="${not empty x.products}">
+                                        <div  class="carousel slide" id="productsShop${x.shopId}" style="height: auto">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                                                    <img src="${pageContext.request.contextPath}/DisplayImages?imgname=${x.products.get(0).image}" alt="Los Angeles" class="object-fit">      
+                                                </div>
+                                                <c:forEach var="xy" items="${x.products}" begin="1">
+                                                    <div class="carousel-item ">
+                                                        <img src="${pageContext.request.contextPath}/DisplayImages?imgname=${xy.image}" alt="Los Angeles" class="object-fit">
+                                                    </div>
+                                                </c:forEach>
+                                            </div>
+                                            <a class="carousel-control-prev" href="#productsShop${x.shopId}" data-slide="prev">
+                                                <span class="carousel-control-prev-icon"></span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#productsShop${x.shopId}" data-slide="next">
+                                                <span class="carousel-control-next-icon"></span>
+                                            </a>
+                                        </div>
+                                    </c:if>
+                                    <h4 class="card-title">
+                                        <div>${x.title}</div>
+                                    </h4>
+                                    <p class="card-text">${x.description}</p>
                                 </div>
-                            </a> 
+                            </div>
                         </div>
                     </c:if>
                 </c:forEach>
@@ -68,12 +86,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         <script>
-            window.onload = function () {
-                window.scroll({
-                    top: window.innerHeight - 90,
-                    behavior: 'smooth'
-                })
-            }
+                                    window.onload = function () {
+                                        window.scroll({
+                                            top: window.innerHeight - 92,
+                                            behavior: 'smooth'
+                                        })
+                                    }
         </script>
         <script>
             $('#loadMore').click(() => {

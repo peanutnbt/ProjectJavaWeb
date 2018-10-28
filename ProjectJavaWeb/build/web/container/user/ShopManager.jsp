@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,42 +26,47 @@
                             <span><em>Cửa hàng của bạn:</em></span>
                         </div>
                         <div class="col-md-9">
-                            <h1 class='text-info display-3'>${shop.title}</h1>
-                            <h5>${shop.description}</h5>
+                            <h1 class='text-info display-3 shopTitle font-weight-bold'>${shop.title}</h1>
+                            <h5 class="shopDescription">${shop.description}</h5>
                             <p >Trạng thái: 
                                 <c:if test="${shop.openOrClose==true}">
-                                    <span class="badge badge-info">Mở cửa</span>
+                                    <span class="badge badge-info shopOpenOrClose" data-name="1">Mở cửa</span>
                                 </c:if>
                                 <c:if test="${shop.openOrClose==false}">
-                                    <span class="badge badge-danger">Đóng cửa</span>
+                                    <span class="badge badge-danger shopOpenOrClose" data-name="0">Đóng cửa</span>
                                 </c:if>
                             </p>
                         </div>
                         <div class="col-md-3 text-right" >
                             <button class="btn danger changeInfoShop" data-toggle="modal" data-target="#collapseUpdateInfoShop">Thay đổi thông tin cửa hàng</button>
-                            <button class="btn info listOrderShop">Danh sách mua hàng</button>
+                            <button class="btn info listOrderShop" data-toggle="modal" data-target="#modalInvoiceShop">Danh sách mua hàng</button>
                         </div>
                         <div class="col-md-12 d-flex justify-content-center">
-                            <button class="btn success buttonShopUser">Xem với tư cách người mua hàng</button>
+                            <a href="${pageContext.request.contextPath}/container/user/Shop.jsp?shopId=${shop.shopId}&userId=${shop.userId}">
+                                <button class="btn success buttonShopUser">Xem với tư cách người mua hàng</button>
+                            </a>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
                         <div class="col-12 mb-3">
-                            <span><em>Bạn có 0 sản phẩm trong cửa hàng</em></span>
+                            <span><em>Bạn có ${fn:length(products)} sản phẩm trong cửa hàng</em></span>
                         </div>
-                        <div class="col-12" class='text-center mt-3'>
-                            <div class="img-thumbnail ml-2 mr-2 row">
-                                <div  class='mt-2 mb-2 col-sm-3'>
-                                    <img class='fixed img-thumbnail' src="https://i.ytimg.com/vi/d5pLgPTWKpM/maxresdefault.jpg" />
-                                </div>
-                                <div  class='mt-2 col-sm-9'>
-                                    <h3><strong>Cơm</strong></h3>
-                                    <h6>Đơn giá: <span class='text-danger' >10000d</span><span class='text-primary' >.vnđ</span> / 1 sản phẩm</h6>
-                                    <button class="btn btn-warning" data-toggle="modal" data-target="#collapseUpdateProduct">Thay đổi thông tin sản phẩm</button>
+                        <c:forEach var="x" items="${products}">
+                            <div class="col-12" class='text-center mt-3'>
+                                <div class="img-thumbnail ml-2 mr-2 row">
+                                    <div  class='mt-2 mb-2 col-sm-3'>
+                                        <img class='fixed img-thumbnail' src="${pageContext.request.contextPath}/DisplayImages?imgname=${x.image}" />
+                                    </div>
+                                    <div  class='mt-2 col-sm-9'>
+                                        <h3><strong class="product${x.productId}name">${x.name}</strong></h3>
+                                        <h6>Đơn giá: <span class='text-danger product${x.productId}price' >${x.price}</span><span class='text-primary' >VNĐ</span> / 1 sản phẩm</h6>
+                                        <input name="product${x.productId}" data-id="${x.productId}" class="btn btn-warning changeProductBtn" type="button" data-toggle="modal" data-target="#collapseUpdateProduct" value="Thay đổi thông tin sản phẩm"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </c:forEach>
+
                     </div>
                     <div class="row mt-5 d-flex justify-content-center">
                         <button class="btn btn-danger btn-outline-danger" data-toggle="modal" data-target="#collapseAddProduct">Thêm sản phẩm mới</button>
@@ -68,48 +74,12 @@
                 </div>
             </div>
         </div>
+
+        
+        <jsp:include page="/component/ModalInvoiceShop.jsp"/>
         <jsp:include page="/component/ModalChangeInfoShop.jsp"/>
         <jsp:include page="/component/ModalAddProduct.jsp"/>
         <jsp:include page="/component/ModalUpdateProduct.jsp"/>
-<!--        <div class="modal fade bd-example-modal-lg" id="collapseUpdateInfoShop" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header  d-flex justify-content-center ">
-                        <h3 class="modal-title " id="exampleModalLabel">Thay đổi thông tin cửa hàng</h3>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <form class="form" action="" method="Post">
-                                <div class="form-group">
-                                    <label for="newShopName" class="text-black">Tên cửa hàng</label><br>
-                                    <input type="text" name="newShopName" id="newShopName"  class="form-control" autocomplete="off" required="required" placeholder="Cơm sườn">
-                                </div>
-                                <div class="form-group">
-                                    <label for="newShopDescription" class="text-black">Miêu tả</label><br>
-                                    <input type="text" name="newShopDescription" id="newShopDescription"  class="form-control" autocomplete="off" required="required" placeholder="Giới thiệu về cửa hàng">
-                                </div>
-                                <div class="form-group">
-                                    <label for="customRadioInline1" class="text-black">Trạng thái</label><br>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline1" name="shopStatus" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline1">Mở cửa</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline">
-                                        <input type="radio" id="customRadioInline2" name="shopStatus" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadioInline2">Đóng cửa</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input style="width: 50%" type="submit" name="newShop" class="btn btn-info btn-md" value="Tạo cửa hàng">
-                                    <button style="width: 49%" type="button" class="btn btn-danger" data-dismiss="modal">Hủy</button>
-                                </div>
-                            </form>
-                    </div>
-                    <div class="modal-footer">
-                    </div>
-                </div>
-            </div>
-        </div>-->
         <div className="footer">
             <div class="ending">
                 <p>Hola Food Made By <a href="https://www.holafood.com">www.holafood.com</a></p>
@@ -129,6 +99,25 @@
                     document.getElementsByClassName("header")[0].classList.add("headerBg");
                 }
             })
+        </script>
+        <script>
+            $(".changeInfoShop").click(() => {
+                $('.newShopNameClass').val($('.shopTitle').html() + "")
+                $('.newShopDescriptionClass').val($('.shopDescription').html() + "")
+                console.log($('.shopOpenOrClose').attr('data-name'))
+                if ($('.shopOpenOrClose').attr('data-name') == "1") {
+                    $('.openShop').attr('checked', "checked")
+                } else {
+                    $('.closeShop').attr("checked", "checked")
+                }
+            })
+            $('.changeProductBtn').click((e) => {
+                console.log(e.target)
+                $("#newProductName").val($('.' + e.target.name + 'name').html())
+                $("#newProductPrice").val($('.' + e.target.name + 'price').html())
+                $('.productIdInputFormUpdate').val(e.target.getAttribute("data-id"));
+            })
+
         </script>
     </body>
 </html>

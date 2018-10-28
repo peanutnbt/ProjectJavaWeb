@@ -21,8 +21,8 @@ import entity.Users;
  * @author PHINC
  */
 public class UploadImages {
-    public static String getNewNameAndStore(HttpServletRequest req,String location,String fileNameSave) throws ServletException, IOException {
-        Part part = req.getPart("avatarUrl");
+    public static String getNewNameAndStore(HttpServletRequest req,String location,String fileNameSave,String inputName) throws ServletException, IOException {
+        Part part = req.getPart(inputName);
         String fileName = Paths.get(part.getSubmittedFileName()).getFileName().toString();
         if (!fileName.isEmpty()) {
             String extension = fileName.replaceFirst("^[^.]+", "");

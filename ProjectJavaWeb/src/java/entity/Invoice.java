@@ -6,6 +6,7 @@
 package entity;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -69,5 +70,6 @@ public class Invoice {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    
     
 }

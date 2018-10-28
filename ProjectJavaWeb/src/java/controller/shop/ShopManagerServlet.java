@@ -5,10 +5,13 @@
  */
 package controller.shop;
 
+import dao.ProductDAO;
 import dao.ShopDAO;
+import entity.Product;
 import entity.Shop;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,6 +37,7 @@ public class ShopManagerServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            response.setCharacterEncoding("utf-8");
             int shopId=Integer.parseInt(request.getParameter("shopId"));
             Shop shop=null;
             try {
@@ -44,6 +48,15 @@ public class ShopManagerServlet extends HttpServlet {
             }
             
             request.setAttribute("shop", shop);
+            ProductDAO productDao=new ProductDAO();
+            try {
+                List<Product> products=productDao.selectAllByShopID(shopId);
+                request.setAttribute("products", products);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+            
             RequestDispatcher rd=request.getRequestDispatcher("/container/user/ShopManager.jsp");
             rd.forward(request, response);
             

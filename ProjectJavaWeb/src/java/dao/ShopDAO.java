@@ -167,13 +167,18 @@ public class ShopDAO {
             psmt.executeUpdate();
             
             ResultSet rs = psmt.getGeneratedKeys();
+            System.out.println("fick");
             if (rs.next()) {
+                
+                System.out.println(rs.getInt(1));
                 shop.setShopId(rs.getInt(1));
             }
             return 1;
         } catch (SQLException ex) {
+            ex.printStackTrace();
             return -1;
         } catch (Exception e) {
+            e.printStackTrace();
             return -1;
         }
     }

@@ -64,7 +64,14 @@
         <servlet-name>DisplayImages</servlet-name>
         <servlet-class>controller.system.DisplayImages</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>NewProductServlet</servlet-name>
+        <servlet-class>controller.product.NewProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <servlet-class>controller.product.UpdateProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -124,6 +131,14 @@
     <servlet-mapping>
         <servlet-name>ShopManagerServlet</servlet-name>
         <url-pattern>/ShopManagerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewProductServlet</servlet-name>
+        <url-pattern>/NewProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <url-pattern>/UpdateProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

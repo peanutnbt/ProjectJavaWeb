@@ -15,6 +15,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_url_var_value;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_param_value_name_nobody;
   private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_if_test;
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_c_forEach_var_items_begin;
 
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
@@ -27,6 +28,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_tagPool_c_url_var_value = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_param_value_name_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
     _jspx_tagPool_c_if_test = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+    _jspx_tagPool_c_forEach_var_items_begin = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
   }
 
   public void _jspDestroy() {
@@ -34,6 +36,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     _jspx_tagPool_c_url_var_value.release();
     _jspx_tagPool_c_param_value_name_nobody.release();
     _jspx_tagPool_c_if_test.release();
+    _jspx_tagPool_c_forEach_var_items_begin.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -100,7 +103,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("        <div class=\"container \" style=\"margin-top: 60px\">\n");
-      out.write("            <div class=\"row\" id=\"shops\">\n");
+      out.write("            <div class=\"row mb-3\" id=\"shops\">\n");
       out.write("                ");
       if (_jspx_meth_c_forEach_0(_jspx_page_context))
         return;
@@ -123,7 +126,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        <script>\n");
       out.write("            window.onload = function () {\n");
       out.write("                window.scroll({\n");
-      out.write("                    top: window.innerHeight - 90,\n");
+      out.write("                    top: window.innerHeight - 92,\n");
       out.write("                    behavior: 'smooth'\n");
       out.write("                })\n");
       out.write("            }\n");
@@ -239,7 +242,7 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
     if (_jspx_eval_c_if_0 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
       do {
         out.write("\n");
-        out.write("                        <div class=\"col-lg-4 portfolio-item mb-3 \">\n");
+        out.write("                        <div class=\"col-lg-4 portfolio-item mb-3 oneShop\">\n");
         out.write("                            ");
         if (_jspx_meth_c_url_0((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
           return true;
@@ -249,6 +252,10 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
         out.write("\">\n");
         out.write("                                <div class=\"card h-100 cardShop\" >\n");
         out.write("                                    <div class=\"card-body\">\n");
+        out.write("                                        ");
+        if (_jspx_meth_c_if_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_0, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+          return true;
+        out.write("\n");
         out.write("                                        <h4 class=\"card-title\">\n");
         out.write("                                            <div>");
         out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.title}", java.lang.String.class, (PageContext)_jspx_page_context, null));
@@ -355,6 +362,104 @@ public final class Home_jsp extends org.apache.jasper.runtime.HttpJspBase
       return true;
     }
     _jspx_tagPool_c_param_value_name_nobody.reuse(_jspx_th_c_param_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_if_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_if_0, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:if
+    org.apache.taglibs.standard.tag.rt.core.IfTag _jspx_th_c_if_1 = (org.apache.taglibs.standard.tag.rt.core.IfTag) _jspx_tagPool_c_if_test.get(org.apache.taglibs.standard.tag.rt.core.IfTag.class);
+    _jspx_th_c_if_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_if_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_0);
+    _jspx_th_c_if_1.setTest(((java.lang.Boolean) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${not empty x.products}", java.lang.Boolean.class, (PageContext)_jspx_page_context, null)).booleanValue());
+    int _jspx_eval_c_if_1 = _jspx_th_c_if_1.doStartTag();
+    if (_jspx_eval_c_if_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+      do {
+        out.write("\n");
+        out.write("                                            <div  class=\"carousel slide\" id=\"productsShop");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.shopId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("\" style=\"height: auto\">\n");
+        out.write("                                                <div class=\"carousel-inner\">\n");
+        out.write("                                                    <div class=\"carousel-item active\">\n");
+        out.write("                                                        <img src=\"");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("/DisplayImages?imgname=");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.products.get(0).image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("\" alt=\"Los Angeles\" class=\"object-fit\">      \n");
+        out.write("                                                    </div>\n");
+        out.write("                                                    ");
+        if (_jspx_meth_c_forEach_1((javax.servlet.jsp.tagext.JspTag) _jspx_th_c_if_1, _jspx_page_context, _jspx_push_body_count_c_forEach_0))
+          return true;
+        out.write("\n");
+        out.write("                                                </div>\n");
+        out.write("                                                <a class=\"carousel-control-prev\" href=\"#productsShop");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.shopId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("\" data-slide=\"prev\">\n");
+        out.write("                                                    <span class=\"carousel-control-prev-icon\"></span>\n");
+        out.write("                                                </a>\n");
+        out.write("                                                <a class=\"carousel-control-next\" href=\"#productsShop");
+        out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.shopId}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+        out.write("\" data-slide=\"next\">\n");
+        out.write("                                                    <span class=\"carousel-control-next-icon\"></span>\n");
+        out.write("                                                </a>\n");
+        out.write("                                            </div>\n");
+        out.write("                                        ");
+        int evalDoAfterBody = _jspx_th_c_if_1.doAfterBody();
+        if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+          break;
+      } while (true);
+    }
+    if (_jspx_th_c_if_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
+      return true;
+    }
+    _jspx_tagPool_c_if_test.reuse(_jspx_th_c_if_1);
+    return false;
+  }
+
+  private boolean _jspx_meth_c_forEach_1(javax.servlet.jsp.tagext.JspTag _jspx_th_c_if_1, PageContext _jspx_page_context, int[] _jspx_push_body_count_c_forEach_0)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  c:forEach
+    org.apache.taglibs.standard.tag.rt.core.ForEachTag _jspx_th_c_forEach_1 = (org.apache.taglibs.standard.tag.rt.core.ForEachTag) _jspx_tagPool_c_forEach_var_items_begin.get(org.apache.taglibs.standard.tag.rt.core.ForEachTag.class);
+    _jspx_th_c_forEach_1.setPageContext(_jspx_page_context);
+    _jspx_th_c_forEach_1.setParent((javax.servlet.jsp.tagext.Tag) _jspx_th_c_if_1);
+    _jspx_th_c_forEach_1.setVar("xy");
+    _jspx_th_c_forEach_1.setItems((java.lang.Object) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${x.products}", java.lang.Object.class, (PageContext)_jspx_page_context, null));
+    _jspx_th_c_forEach_1.setBegin(1);
+    int[] _jspx_push_body_count_c_forEach_1 = new int[] { 0 };
+    try {
+      int _jspx_eval_c_forEach_1 = _jspx_th_c_forEach_1.doStartTag();
+      if (_jspx_eval_c_forEach_1 != javax.servlet.jsp.tagext.Tag.SKIP_BODY) {
+        do {
+          out.write("\n");
+          out.write("                                                        <div class=\"carousel-item \">\n");
+          out.write("                                                            <img src=\"");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("/DisplayImages?imgname=");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${xy.image}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("\" alt=\"Los Angeles\" class=\"object-fit\">\n");
+          out.write("                                                        </div>\n");
+          out.write("                                                    ");
+          int evalDoAfterBody = _jspx_th_c_forEach_1.doAfterBody();
+          if (evalDoAfterBody != javax.servlet.jsp.tagext.BodyTag.EVAL_BODY_AGAIN)
+            break;
+        } while (true);
+      }
+      if (_jspx_th_c_forEach_1.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+        return true;
+      }
+    } catch (Throwable _jspx_exception) {
+      while (_jspx_push_body_count_c_forEach_1[0]-- > 0)
+        out = _jspx_page_context.popBody();
+      _jspx_th_c_forEach_1.doCatch(_jspx_exception);
+    } finally {
+      _jspx_th_c_forEach_1.doFinally();
+      _jspx_tagPool_c_forEach_var_items_begin.reuse(_jspx_th_c_forEach_1);
+    }
     return false;
   }
 }

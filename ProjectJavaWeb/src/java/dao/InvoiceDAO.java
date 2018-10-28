@@ -53,6 +53,7 @@ public class InvoiceDAO {
         return invoices;
     }
     
+    
     public List<Invoice> searchByUserID(int userID) throws Exception {
         List<Invoice> invoices = new ArrayList<>();
         String query = "select * from [Invoice] where UserID like N'%"+userID+"%'";

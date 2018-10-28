@@ -9,9 +9,7 @@ import dao.UsersDAO;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -20,16 +18,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
+import utils.StringUtils;
 import utils.UploadImages;
 
 /**
  *
  * @author ASUS
  */
-@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
-        maxFileSize = 1024 * 1024 * 50, // 50MB
-        maxRequestSize = 1024 * 1024 * 50,// 50MB
-        location = "C:\\Users\\Admin.10.12\\Downloads\\ProjectJavaWeb\\web\\public\\images")
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2)
 public class SigupServlet extends HttpServlet {
 
     /**
@@ -81,9 +77,9 @@ public class SigupServlet extends HttpServlet {
         UsersDAO userdao = new UsersDAO();
         
         //check loi up anh
-        String avatarUrl=UploadImages.getNewNameAndStore(request, request.getServletContext().getInitParameter("IMAGE_STORAGE_LOCATION"), username);
+        String avatarUrl=UploadImages.getNewNameAndStore(request, request.getServletContext().getInitParameter("IMAGE_STORAGE_LOCATION"), StringUtils.appliesSHA256(new Date().getTime()+""),"avatarUrl");
         
-
+        System.out.println("/"+avatarUrl+"/");
         String password = request.getParameter("password").trim();
         String email = request.getParameter("email").trim();
         String name = request.getParameter("name").trim();
@@ -106,6 +102,7 @@ public class SigupServlet extends HttpServlet {
             return;
         } else {
             session.setAttribute("user", user);
+            session.setMaxInactiveInterval(86400);
             response.sendRedirect("container/user/Home.jsp");
         }
 

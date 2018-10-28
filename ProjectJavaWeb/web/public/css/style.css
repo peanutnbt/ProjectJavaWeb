@@ -3,6 +3,16 @@
     margin: 0;
     padding: 0;
 }
+
+#modalInvoiceShop .modal-dialog.modal-lg {
+    max-width: 96%;
+}
+
+img.fixed.img-thumbnail {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
 .carousel-inner img {
     width: 100%;
     height: 100%;
@@ -76,14 +86,56 @@ Footer {
 
 *{margin: 0;padding: 0}
 
+#modalInvoiceShop .modal-dialog.modal-lg {
+}
+
+div#modalInvoiceShop .modal-content {
+    height: 90vh;
+    overflow: auto;
+}
+
+div#modalInvoiceShop {
+}
+
+.img-thumbnail.ml-2.mr-2.row {
+    height: 180px;
+    display: flex;
+    align-items: center;
+}
+
+.overlay h2 {
+    text-align: center;
+}
+
+.col-4.hovereffect3 {
+    display: flex;
+    justify-content: center;
+}
+
+a.carousel-control-prev,a.carousel-control-next {
+    z-index: 1000;
+}
+
+.carousel-item.active {
+    position: relative;
+}
+
+.carousel-caption.d-none.d-md-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
 img.img-responsive.img-circle {
 }
 
 span.user-name {
-    white-space: nowrap;
     width: 69%;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: #576574;
+    font-weight: 700;
 }
 
 span.user-avatar.pull-left {
@@ -104,6 +156,8 @@ a.btn.btn-danger.cartButton {
     justify-content: center;
     align-items: center;
     margin-right: 5px;
+    background: #D41816;
+    border: none;
 }
 
 div#loadMore {
@@ -132,6 +186,7 @@ div#collapseExample {
     background: #eee;
     width: 172px;
     border-radius: 5px;
+    z-index: 2000;
 }
 div#collapseExample i{
     margin: 0 6px;
@@ -161,6 +216,8 @@ div#collapseExample ul {
     height: 44px;
     display: flex;
     align-items: center;
+    background: #feca57;
+    border: none;
 }
 html,
 css {
@@ -510,8 +567,9 @@ css {
 }
 
 .img-logo {
-    width: 100%;
-    margin-top: 3px
+    width: 65%;
+    margin-top: 3px;
+    margin-left: 55px;
 }
 
 .food-list {
@@ -528,10 +586,32 @@ css {
     padding: 0;
 }
 .header{
-    background:#F7F4E3!important;
+    background: #fff;
     transition: .2s;
-    padding: 0!important
+    padding: 0!important;
 }
+
+.header:after {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: 0px;
+    background: #ffa700;
+}
+
+.header:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 2px;
+    left: 0;
+    top: -2px;
+    background: #ffa700;
+}
+
+nav.navbar.header.fixed-top.navber-expland-lg.navbar-light:after {}
 .header.headerBg{
     background-color: #F7F4E3!important;
     transition: .2s;
@@ -698,7 +778,7 @@ Footer {
 .footerImg{
     background:url("../images/footerImg.jpg");
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     background-size: cover;
     background-attachment: fixed;
 }
@@ -750,8 +830,8 @@ Footer {
 
     border: 5px solid tomato;
 }
-.signinBtn{color: rgb(48, 48, 48)!important}
-.signupBtn{color: rgb(48, 48, 48)!important}
+.signinBtn{color: #D41816;}
+.signupBtn{color: #D41816;}
 .changeInfoShop{
     color: red;
     border: 2px solid #f44336;
@@ -793,5 +873,141 @@ Footer {
 }
 .listOrderShop:hover{
     background: #2196F3;
-  color: white;
+    color: white;
+}
+.bannerImgContainer:after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #00000087;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+.modalLogin {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modalLogin {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    animation-name: fadeIn;
+    animation-duration: 0.4s
+}
+
+/* Modal Content */
+.modalLogin-content {
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 40%;
+    background: white;
+    left: 50%;
+    animation-name: slideIn;
+    animation-duration: 0.4s;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 5px #0000008c;
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+p.skipShopping.close {
+    color: #D41816;
+    font-size: 24px!important;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modalLogin-header {
+    padding: 2px 16px;
+    color: black;
+}
+
+.modalLogin-body {padding: 2px 16px;font-family: cursive;}
+
+.modalLogin-body a {
+    display: inline-block;
+    font-size: 20px;
+    color: #D41816;
+    font-weight: bold;
+    width: 30%;
+}
+
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {top: -300px; opacity: 0} 
+    to {top: 50%; opacity: 1}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0} 
+    to {opacity: 1}
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #555555; 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #FFA700; 
 }

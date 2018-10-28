@@ -8,6 +8,7 @@ package dao;
 import Context.DBContext;
 import entity.InvoiceLine;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,26 @@ public class InvoiceLineDAO {
             int unitprice = rs.getInt("UnitPrice");
             String note = rs.getString("Note");
             invoicelines.add(new InvoiceLine(invoiceID, productID, quatity, unitprice, note));
+        }
+        rs.close();
+        con.close();
+        return invoicelines;
+    }
+    
+    public List<InvoiceLine> selectByInvoiceId(int invoiceId) throws Exception {
+        List<InvoiceLine> invoicelines = new ArrayList<>();
+        String query = "select * from [InvoiceLine] where InvoiceID = ?";
+        Connection con = new DBContext().getConnection();
+        PreparedStatement ps= con.prepareStatement(query);
+        ps.setInt(1, invoiceId);
+        
+        ResultSet rs = con.prepareStatement(query).executeQuery();
+        while(rs.next()){
+            int productID = rs.getInt("ProductID");
+            int quatity = rs.getInt("Quatity");
+            int unitprice = rs.getInt("UnitPrice");
+            String note = rs.getString("Note");
+            invoicelines.add(new InvoiceLine(invoiceId, productID, quatity, unitprice, note));
         }
         rs.close();
         con.close();

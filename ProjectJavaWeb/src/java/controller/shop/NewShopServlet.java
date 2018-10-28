@@ -36,16 +36,23 @@ public class NewShopServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            HttpSession session=request.getSession();
-            Users user=(Users)session.getAttribute("user");
-            int userId=user.getUserId();
-            String newShopName=request.getParameter("newShopName");
-            String newShopDescription=request.getParameter("newShopDescription");
-            boolean openOrClose=false;
-            ShopDAO shopDao=new ShopDAO();
-            Shop shop=new Shop(userId, newShopName, newShopDescription, openOrClose);
-            shopDao.insert(shop);
-            response.sendRedirect("/ProjectJavaWeb/ShopManagerServlet?shopId="+shop.getShopId());
+            request.setCharacterEncoding("utf-8");
+            HttpSession session = request.getSession();
+            Users user = (Users) session.getAttribute("user");
+            int userId = user.getUserId();
+            String newShopName = request.getParameter("newShopName");
+            String newShopDescription = request.getParameter("newShopDescription");
+            boolean openOrClose = false;
+            ShopDAO shopDao = new ShopDAO();
+            Shop shop = new Shop(userId, newShopName, newShopDescription, openOrClose);
+            System.out.println(userId);
+            if (shopDao.insert(shop) == -1) {
+                return;
+            } else {
+                System.out.println("shopID " + shop.getShopId());
+                response.sendRedirect("/ProjectJavaWeb/ShopManagerServlet?shopId=" + shop.getShopId());
+            }
+
         }
     }
 
@@ -61,7 +68,7 @@ public class NewShopServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**

@@ -48,7 +48,7 @@ public class ProductDAO {
             int productID = rs.getInt("ProductID");
             String name = rs.getString("Name");
             String image = rs.getString("Image");
-            int price = rs.getInt("Price");
+            double price = rs.getDouble("Price");
             products.add(new Product(productID, shopID, name, image, price));
         }
         rs.close();
@@ -125,5 +125,49 @@ public class ProductDAO {
         rs.close();
         con.close();
         return product;
+    }
+    public int insert(Product product) {
+        try (Connection con = new DBContext().getConnection()) {
+            String sql = "INSERT INTO [Product](shopId,name,image,price) values(?,?,?,?)";
+            String[] gererates = {"productId"};
+            PreparedStatement psmt = con.prepareStatement(sql, gererates);
+//            psmt.setInt(1, c.getId());
+            psmt.setInt(1, product.getShopId());
+            psmt.setString(2, product.getName());
+            psmt.setString(3, product.getImage());
+            psmt.setDouble(4, product.getPrice());
+            psmt.executeUpdate();
+            
+            ResultSet rs = psmt.getGeneratedKeys();
+            if (rs.next()) {
+                product.setShopId(rs.getInt(1));
+            }
+            return 1;
+        } catch (SQLException ex) {
+            return -1;
+        } catch (Exception e) {
+            return -1;
+        }
+    }
+    public int update(Product product) throws Exception {
+        int k = 0;
+        try (Connection con = new DBContext().getConnection();) {
+            String sql = "UPDATE [Product] SET name=?, image=?,"
+                    + "price=? WHERE productid=?";
+            PreparedStatement psmt = con.prepareStatement(sql);
+            psmt.setString(1, product.getName());
+            psmt.setString(2, product.getImage());
+            psmt.setDouble(3, product.getPrice());
+            psmt.setInt(4, product.getProductId());
+            k = psmt.executeUpdate();
+            con.close();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            return -1;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return -1;
+        }
+        return k;
     }
 }

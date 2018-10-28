@@ -10,21 +10,21 @@
                     <input type="text" name="shopId" value="${param.shopId}" hidden="true"/>
                     <div class="form-group">
                         <label for="newShopName" class="text-black">Tên cửa hàng</label><br>
-                        <input type="text" name="shopName" id="newShopName"  class="form-control" autocomplete="off" required="required" placeholder="Cơm sườn">
+                        <input type="text" name="shopName" id="newShopName"  class="form-control newShopNameClass" autocomplete="off" required="required">
                     </div>
                     <div class="form-group">
                         <label for="newShopDescription" class="text-black">Miêu tả</label><br>
-                        <input type="text" name="shopDescription" id="newShopDescription"  class="form-control" autocomplete="off" required="required" placeholder="Giới thiệu về cửa hàng">
+                        <input type="text" name="shopDescription" id="newShopDescription"  class="form-control newShopDescriptionClass" autocomplete="off" required="required" placeholder="Giới thiệu về cửa hàng">
                     </div>
                     <div class="form-group">
                         <label for="customRadioInline1" class="text-black">Trạng thái</label><br>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="shopStatus" checked="checked" class="custom-control-input" value="1">
-                            <label class="custom-control-label" for="customRadioInline1">Mở cửa</label>
+                            <input type="radio" id="customRadioInline1" name="shopStatus" class="custom-control-input openShop" value="1">
+                            <label class="custom-control-label " for="customRadioInline1">Mở cửa</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="shopStatus" class="custom-control-input" value="0">
-                            <label class="custom-control-label" for="customRadioInline2">Đóng cửa</label>
+                            <input type="radio" id="customRadioInline2" name="shopStatus" class="custom-control-input closeShop" value="0">
+                            <label class="custom-control-label " for="customRadioInline2">Đóng cửa</label>
                         </div>
                     </div>
                     <div class="form-group">
