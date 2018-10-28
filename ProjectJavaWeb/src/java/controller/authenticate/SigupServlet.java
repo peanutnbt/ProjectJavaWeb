@@ -77,9 +77,14 @@ public class SigupServlet extends HttpServlet {
         UsersDAO userdao = new UsersDAO();
         
         //check loi up anh
+//<<<<<<< HEAD
         String avatarUrl=UploadImages.getNewNameAndStore(request, request.getServletContext().getInitParameter("IMAGE_STORAGE_LOCATION"), StringUtils.appliesSHA256(new Date().getTime()+""),"avatarUrl");
         
         System.out.println("/"+avatarUrl+"/");
+//=======
+//        String avatarUrl=UploadImages.getNewNameAndStore(request, request.getServletContext().getInitParameter("IMAGE_STORAGE_LOCATION"), username);
+//
+//>>>>>>> 57f8854f1efdd2ee9ebd2b441cdaf6d61bbd4e56
         String password = request.getParameter("password").trim();
         String email = request.getParameter("email").trim();
         String name = request.getParameter("name").trim();

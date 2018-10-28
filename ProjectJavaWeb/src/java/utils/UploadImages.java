@@ -54,6 +54,7 @@ public class UploadImages {
                int i = clientFileName.lastIndexOf('.');
                // file1.zip
                // file2.zip
+               System.out.println("Return = " + clientFileName.substring(i + 1));
                return clientFileName.substring(i + 1);
            }
        }

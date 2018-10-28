@@ -14,13 +14,13 @@ public class InvoiceProduct {
     private int shopID;
     private String name;
     private String image;
-    private int price;
+    private double price;
     private int quantity;
     private String note;
     public InvoiceProduct() {
     }
 
-    public InvoiceProduct(int productID, int shopID, String name, String image, int price, int quantity, String note) {
+    public InvoiceProduct(int productID, int shopID, String name, String image, double price, int quantity, String note) {
         this.productID = productID;
         this.shopID = shopID;
         this.name = name;
@@ -64,11 +64,11 @@ public class InvoiceProduct {
         this.image = image;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

@@ -126,6 +126,7 @@ public class ProductDAO {
         con.close();
         return product;
     }
+//<<<<<<< HEAD
     public int insert(Product product) {
         try (Connection con = new DBContext().getConnection()) {
             String sql = "INSERT INTO [Product](shopId,name,image,price) values(?,?,?,?)";
@@ -159,15 +160,29 @@ public class ProductDAO {
             psmt.setString(2, product.getImage());
             psmt.setDouble(3, product.getPrice());
             psmt.setInt(4, product.getProductId());
+//=======
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+//>>>>>>> 57f8854f1efdd2ee9ebd2b441cdaf6d61bbd4e56
+        return k;
+    }
+     public int remove(int productId) throws Exception {
+        int k = 0;
+        try(Connection con = new DBContext().getConnection()) {
+            String sql = "DELETE FROM [Product] WHERE productId=?";
+            PreparedStatement psmt = con.prepareStatement(sql);
+            psmt.setInt(1, productId);
             k = psmt.executeUpdate();
             con.close();
         } catch (SQLException ex) {
             System.out.println(ex);
+//<<<<<<< HEAD
             return -1;
         } catch (Exception ex) {
             System.out.println(ex);
             return -1;
         }
         return k;
-    }
+     }
 }

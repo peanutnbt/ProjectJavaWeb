@@ -9,16 +9,21 @@ import dao.UsersDAO;
 import entity.Users;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import utils.StringUtils;
+import utils.UploadImages;
 
 /**
  *
  * @author Admin.10.12
  */
+@MultipartConfig()
 public class UpdateUserInfoServlet extends HttpServlet {
 
     /**
@@ -39,16 +44,23 @@ public class UpdateUserInfoServlet extends HttpServlet {
             
             String email = request.getParameter("email");
             String name = request.getParameter("name");
-            String avatar = request.getParameter("avatarUrl");            
+            String avatar = request.getParameter("avatar");            
             UsersDAO dao = new UsersDAO();
             Users oldUser = (Users) session.getAttribute("user");
-            
-            Users newUser = new Users(oldUser.getUserId(),oldUser.getUsername(),oldUser.getPassword(),email,name,avatar,0);
+//            String avatarUrl=UploadImages.getNewNameAndStore(request, request.getServletContext().getInitParameter("IMAGE_STORAGE_LOCATION"), oldUser.getUsername());
+            String avatarUrl=UploadImages.getNewNameAndStore(request, request.getServletContext().getInitParameter("IMAGE_STORAGE_LOCATION"),StringUtils.appliesSHA256(new Date().getTime()+""),"avatarUrl");
+            Users newUser;
+            if(avatarUrl!=null){
+                newUser = new Users(oldUser.getUserId(),oldUser.getUsername(),oldUser.getPassword(),email,name,avatarUrl,1);
+            }else{
+                newUser = new Users(oldUser.getUserId(),oldUser.getUsername(),oldUser.getPassword(),email,name,avatar,1);
+            }
             int k = dao.update(newUser);
             session.setAttribute("user", newUser);
             response.sendRedirect("UserAllProductServlet?userId="+newUser.getUserId());
          
         }catch (Exception e) {
+            e.printStackTrace();
             response.getWriter().println(e);
         }
     }

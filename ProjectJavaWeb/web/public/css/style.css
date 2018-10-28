@@ -873,6 +873,7 @@ Footer {
 }
 .listOrderShop:hover{
     background: #2196F3;
+/*<<<<<<< HEAD*/
     color: white;
 }
 .bannerImgContainer:after{
@@ -1011,3 +1012,8 @@ p.skipShopping.close {
 ::-webkit-scrollbar-thumb:hover {
     background: #FFA700; 
 }
+/*=======*/
+/*  color: white;
+}*/
+
+/*>>>>>>> 57f8854f1efdd2ee9ebd2b441cdaf6d61bbd4e56*/

@@ -65,12 +65,35 @@
         <servlet-class>controller.system.DisplayImages</servlet-class>
     </servlet>
     <servlet>
+        <!--<<<<<<< HEAD-->
         <servlet-name>NewProductServlet</servlet-name>
         <servlet-class>controller.product.NewProductServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateProductServlet</servlet-name>
         <servlet-class>controller.product.UpdateProductServlet</servlet-class>
+        <!--=======-->
+    </servlet>
+    <servlet>
+        <servlet-name>CartControllerServlet</servlet-name>
+        <servlet-class>controller.cart.CartControllerServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <servlet-class>controller.cart.RemoveProductServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PushProductSessionServlet</servlet-name>
+        <servlet-class>controller.cart.PushProductSessionServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ThanhToanServlet</servlet-name>
+        <servlet-class>controller.cart.ThanhToanServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProductSessionServlet</servlet-name>
+        <servlet-class>controller.cart.AddProductSessionServlet</servlet-class>
+        <!-->>>>>>> 57f8854f1efdd2ee9ebd2b441cdaf6d61bbd4e56-->
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -133,12 +156,36 @@
         <url-pattern>/ShopManagerServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <!--<<<<<<< HEAD-->
         <servlet-name>NewProductServlet</servlet-name>
         <url-pattern>/NewProductServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateProductServlet</servlet-name>
         <url-pattern>/UpdateProductServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--=======-->
+    <servlet-mapping>
+        <servlet-name>CartControllerServlet</servlet-name>
+        <url-pattern>/CartControllerServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveProductServlet</servlet-name>
+        <url-pattern>/RemoveProductServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PushProductSessionServlet</servlet-name>
+        <url-pattern>/PushProductSessionServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ThanhToanServlet</servlet-name>
+        <url-pattern>/ThanhToanServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProductSessionServlet</servlet-name>
+        <url-pattern>/AddProductSessionServlet</url-pattern>
+        <!-->>>>>>> 57f8854f1efdd2ee9ebd2b441cdaf6d61bbd4e56-->
     </servlet-mapping>
     <session-config>
         <session-timeout>

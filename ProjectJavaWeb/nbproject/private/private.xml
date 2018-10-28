@@ -3,10 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/web/component/ModalInvoiceShop.jsp</file>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/src/java/controller/shop/ShopManagerServlet.java</file>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/web/container/user/ShopManager.jsp</file>
-            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/src/java/entity/Shop.java</file>
+            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/ASUS/Desktop/abc/ProjectJavaWeb/nbproject/build-impl.xml</file>
         </group>
     </open-files>
 </project-private>

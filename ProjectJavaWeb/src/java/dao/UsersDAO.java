@@ -144,7 +144,7 @@ public class UsersDAO {
             int shopID = rs.getInt("ShopID");
             String name = rs.getString("Name");
             String image = rs.getString("Image");
-            int price = rs.getInt("Price");            
+            double price = rs.getDouble("Price");            
             int quantity = rs.getInt("Quatity");  
             String note = rs.getString("Note");  
             list.add(new InvoiceProduct(productID,shopID,name,image,price,quantity,note));
